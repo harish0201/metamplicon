@@ -2,6 +2,7 @@
 ##put primer1 and 2 as commandline args, seqkit and bbmap installation directory path to be given.
 #!/bin/bash
 mkdir -p proc_fastq/paired
+owd=$PWD
 primer1="$1"
 primer2="$2"
 seqkit_bin="$3"
@@ -20,7 +21,20 @@ cd proc_fastq
 for i in *R1.fastq; do "$4"/repair.sh in="$i" in2=$(basename "$i" R1.fastq)R2.fastq \
 out=paired/"$i" out2=paired/$(basename "$i" R1.fastq)R2.fastq ain=t; done
 
-cd ../
+echo "re-pairing data"
+echo "checking if orientation is correct or not"
 
-echo "files written to proc_fastq/paired"
+cd paired
+Rscript $owd/primer_checks.R "$1" "$2"
+echo "check proc_fastq/primer_hits.txt for final summary"
+rm -rf filtN
+rm ../*fastq
+mv *.fastq ../
+mv primer_hits.txt ../
+
+cd $owd
+
+echo "files written to proc_fastq/ primer hits written to primer_hits.txt"
+echo "other primer pairs can be checked independently with primer_checks.R. Use it as\
+Rscript primer_checks.R primer1 primer2"
 echo "done"
