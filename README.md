@@ -1,13 +1,14 @@
-# metamplicon
+## metamplicon
 Scripts to work on Amplicon sequencing
 
-Will update as and well needed.
+Will update as and when needed.
 
 Dependencies:
 1. Seqkit
 2. bbmap - repair.sh
 3. R and Libraries: Biostrings, ShortRead, DADA2
 
+# correct_bidirectional.sh
 Notes:
 1. used for bidirectional sequencing, which was popular a few years back on 454 and Illumina platforms. Unfortunately this works for Illumina Platforms, as others (454) etc are fairly trivial to account for.
 2. uses `seqkit grep` to locate primer sequences in the amplicon datasets. This is done via `-d` option which scans across for degenerate bases
