@@ -33,10 +33,9 @@ Time: ~1min
 ````
 
 Usage: 
-1. correct_bidirectional.sh: Correcting orientation of paired reads in case "orient.fwd" doesnt work. Will later check for single ended reads.
-2. Use untrimmed reads only
-sh correct_bidirectional.sh primer1 primer2 /path/to/seqkit /path/to/bbmap #no.of.processes
+1. Use untrimmed reads only
+2. sh correct_bidirectional.sh primer1 primer2 /path/to/seqkit /path/to/bbmap #no.of.processes
 
 Caveats: 
 1. Some data loss is expected, if either primers are not sequenced through.
-2. seqkit uses a single thread. #no.of.processes refers to the number of samples processed in parallel
+2. seqkit uses a single thread. #no.of.processes refers to the number of samples processed in parallel. Feel free to increase the number of threads (n) using `-j n` by editing the shell script after each seqkit invocation
