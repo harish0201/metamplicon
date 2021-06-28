@@ -16,6 +16,14 @@ Notes:
 4. Tried `seqkit locate` with `-P -d -i -r` parameter sets for searching primary strand with degenerate bases and case insensitivity, but its super slow. `locate` results in about 2-5% more number of sequences than `grep` but needs exploring. 
 5. Comparative note after the entire process is done, all the seqkit processes running on single thread:
 ````
+Before any processing:
+	Forward	Complement	Reverse	RevComp
+FWD.ForwardReads	159453	0	0	2034
+FWD.ReverseReads	181109	0	0	1648
+REV.ForwardReads	165373	0	0	1244
+REV.ReverseReads	148850	0	0	754
+
+
 With seqkit locate:
                  Forward Complement Reverse RevComp
 FWD.ForwardReads  134792          0       0    2443
